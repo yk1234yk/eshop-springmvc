@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context reloadable="true">
+	<Resource
+	    name="jdbc/eshopDS"
+	    type="javax.sql.DataSource"
+	    driverClassName="com.mysql.cj.jdbc.Driver"
+	    url="jdbc:mysql://127.0.0.1:3306/eshop?useSSL=true&amp;serverTimezone=Asia/Shanghai"
+	    username="root"
+	    password="12345"
+        maxTotal="100"
+        maxIdle="20"
+        maxWaitMillis="5000" />
+</Context>

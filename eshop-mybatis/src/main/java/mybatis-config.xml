@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置根元素 -->	
+<configuration>
+
+	<!-- 读取属性文件 -->
+	<properties resource="mysql.properties"></properties>
+	
+	<!-- 设置：一级缓存只用于语句级 -->
+	<settings>
+		<!-- 有效值: true|false，默认值为true -->
+		<setting name="cacheEnabled" value="true" />
+		<!-- 有效值：SESSION|STATEMENT，默认值为SESSION -->
+		<setting name="localCacheScope" value="STATEMENT" />
+	</settings>
+	
+	<!-- 为com.xhxy.eshop.entity包内所有类指定别名，默认为首字母小写 -->
+	<typeAliases>
+		<package name="com.xhxy.eshop.entity" />
+	</typeAliases>
+	
+	<!-- 枚举Enum处理器，设定为按序号存储 -->
+	<typeHandlers>
+		<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+		javaType="com.xhxy.eshop.entity.Status"/>
+	</typeHandlers>
+	
+	<!-- 配置拦截器（分页插件） -->
+	<plugins>
+		<plugin interceptor="com.xhxy.eshop.interceptor.PagePlugin" />
+	</plugins>
+	
+	<!-- 用于配置多个数据库环境 -->
+	<environments default="mysql">
+		<!-- environment配置一个数据库环境 -->
+		<environment id="mysql">
+			<!-- 配置事务类型：JDBC或Managed，此时的JDBC等都是实现类的缩写 -->
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接池，POOLED也是一个实现类的缩写  -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 配置mapper文件 -->
+	<mappers>
+		<!-- mapper文件负责管理MyBatis的SQL语句 -->
+		<package name="com.xhxy.eshop.mapper" />	<!-- 扫描包方式 -->
+		<!-- <mapper resource="com/xhxy/eshop/mapper/FaqMapper.xml" /> --><!-- 逐个文件方式 -->
+	</mappers>
+</configuration>

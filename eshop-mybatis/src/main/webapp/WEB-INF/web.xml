@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>eshop</display-name>
+  
+  <context-param>  
+    <param-name>log4jConfiguration</param-name>  
+    <param-value>classpath:log4j2.xml</param-value>  
+  </context-param>  
+	  
+  <listener>  
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>  
+  </listener>
+<!--    启用Spring容器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/daoContext.xml,/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+  
+<!--    前端控制器：启用SpringMVC容器-->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/springmvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+<!--    配置SpringMVC的核心控制器处理所有请求-->
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+<!--  定义处理字符编码的过滤器-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/template/shop/404.jsp</location>
+  </error-page>
+  <context-param>
+  	<param-name>registerAddress</param-name>
+  	<param-value>江苏省徐州市金山东路1号</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>email</param-name>
+  	<param-value>admin@eshop.com</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>phone</param-name>
+  	<param-value>+86 516 12345678</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>webName</param-name>
+  	<param-value>江苏徐海电子商务网</param-value>
+  </context-param>
+  
+  <welcome-file-list>
+    <welcome-file>index</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
