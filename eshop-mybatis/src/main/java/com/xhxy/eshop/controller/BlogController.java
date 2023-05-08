@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(name = "/blog")
+@RequestMapping("/blog")
 public class BlogController extends BaseServlet {
 
     //	private BlogService blogService = new BlogServiceImpl();

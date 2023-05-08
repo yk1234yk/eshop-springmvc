@@ -7,9 +7,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>推荐文章</title>
-	<link rel="shortcut icon" href="assets/images/favicon.png" />
-	<link href="../../../assets/css/theme-plugin.css" rel="stylesheet" />
-	<link href="../../../assets/css/theme.min.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 	        <nav aria-label="breadcrumb">
 	          <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
 	            <li class="breadcrumb-item"><a class="link-title" href="index">首页</a></li>
-	            <li class="breadcrumb-item"><a class="link-title" href="blog">好物推荐</a></li>
+	            <li class="breadcrumb-item"><a class="link-title" href="blog/list">好物推荐</a></li>
 	            <li class="breadcrumb-item active text-primary" aria-current="page">详情</li>
 	          </ol>
 	        </nav>
@@ -55,7 +55,7 @@
 	          	<div class="position-absolute z-index-1 bg-white text-pink text-center py-2 px-3 my-4 blog-info rounded-right">
 	          	<i class="las la-calendar-check"></i> ${blog.createTime} <span>|</span> 
 	          	<i class="las la-comment-alt"></i> <a href="#">${fn:length(blog.commentList)} 条评论</a></div>
-	            <img src="${blog.pic}" alt="标题图片" />
+	            <img src="${pageContext.request.contextPath}/${blog.pic}" alt="标题图片" />
 	          </div>
 	          <div class="card-body pt-5 px-0">
 	            <h2 class="font-w-6 mb-3 line-h-normal link-title"> ${blog.title}  </h2>
@@ -78,7 +78,7 @@
 	                    <li class="comment_info">
 	                        <div class="d-flex">
 	                            <div class="comment_user">
-	                                <img src="../../../assets/images/thumbnail/member3.png" alt="user4">
+	                                <img src="${pageContext.request.contextPath}/assets/images/thumbnail/member3.png" alt="user4">
 	                            </div>
 	                            <div class="comment_content">
 	                                 <div class="d-flex">
@@ -97,7 +97,7 @@
 	            <c:choose>
 				   <c:when test="${username == null}">
 				      <div class="mb-5">
-			              <h5><a href="user?method=login">登录</a>后，方可评论</h5>
+			              <h5><a href="${pageContext.request.contextPath}/user?method=login">登录</a>后，方可评论</h5>
 			          </div>
 				   </c:when>
 				   <c:otherwise>

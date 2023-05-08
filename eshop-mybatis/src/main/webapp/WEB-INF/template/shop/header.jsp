@@ -92,7 +92,7 @@
                                 <li class="nav-item"><a class="nav-link active" href="index">首页</a></li>
                                 <li class="nav-item"><a class="nav-link" href="category?method=all">分类商品</a></li>
                                 <li class="nav-item"><a class="nav-link" href="miaosha.jsp">秒杀</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog">好物推荐</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog/list">好物推荐</a></li>
                                 <li class="nav-item"><a class="nav-link" href="faq">常见问题</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#"> </a></li>
                             </ul>

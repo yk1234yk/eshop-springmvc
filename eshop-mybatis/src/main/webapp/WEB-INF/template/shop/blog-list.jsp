@@ -6,9 +6,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>推荐文章列表</title>
-	<link rel="shortcut icon" href="assets/images/favicon.png" />
-	<link href="../../../assets/css/theme-plugin.css" rel="stylesheet" />
-	<link href="../../../assets/css/theme.min.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -58,11 +58,11 @@
               <div class="position-relative rounded overflow-hidden">
                 <div class="position-absolute z-index-1 bg-white text-pink text-center py-1 px-3 my-4">
                     ${blog.createTime}</div>
-                <img class="card-img-top hover-zoom" src="${blog.pic}" alt="Image"> </div>
+                <img class="card-img-top hover-zoom" src="${pageContext.request.contextPath}/${blog.pic}" alt="Image"> </div>
               <div class="card-body px-0 pb-0">
               	<div> ${blog.admin.username},${blog.admin.department}</div>
                 <h4 class="h5 font-w-5 mt-2 mb-0"> 
-                	<a class="link-title" href="blog?method=detail&id=${blog.id}">${blog.title}</a> </h4>
+                	<a class="link-title" href="${pageContext.request.contextPath}/blog/detail/${blog.id}">${blog.title}</a> </h4>
               </div>
               <div></div>
             </div>
@@ -78,23 +78,23 @@
           	<c:choose>
           		<c:when test="${page.pageIndex == 1}">
           			<li class="page-item">
-          				<a class="page-link" href="blog?method=list&pageSize=${page.pageSize}&pageIndex=${page.pageIndex}">前一页</a></li>
+          				<a class="page-link" href="${pageContext.request.contextPath}/blog/list?pageSize=${page.pageSize}&pageIndex=${page.pageIndex}">前一页</a></li>
           		</c:when>
             	<c:otherwise>
             		<li class="page-item">
-            			<a class="page-link" href="blog?method=list&pageSize=${page.pageSize}&pageIndex=${page.pageIndex-1}">前一页</a></li>
+            			<a class="page-link" href="${pageContext.request.contextPath}/blog/list?pageSize=${page.pageSize}&pageIndex=${page.pageIndex-1}">前一页</a></li>
             	</c:otherwise>
             </c:choose>
             <c:forEach begin="1" end="${page.totalPage}" varStatus="status">
             	<li class="page-item">
-            		<a class="page-link" href="blog?method=list&pageSize=${page.pageSize}&pageIndex=${status.index}">${status.index}</a></li>
+            		<a class="page-link" href="${pageContext.request.contextPath}/blog/list?pageSize=${page.pageSize}&pageIndex=${status.index}">${status.index}</a></li>
             </c:forEach>
             <c:choose>
           		<c:when test="${page.pageIndex == page.totalPage}">
-          			<li class="page-item"><a class="page-link" href="blog?method=list&pageSize=${page.pageSize}&pageIndex=${page.pageIndex}">后一页</a></li>
+          			<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/blog/list?pageSize=${page.pageSize}&pageIndex=${page.pageIndex}">后一页</a></li>
           		</c:when>
             	<c:otherwise>
-            		<li class="page-item"><a class="page-link" href="blog?method=list&pageSize=${page.pageSize}&pageIndex=${page.pageIndex+1}">后一页</a></li>
+            		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/blog/list?pageSize=${page.pageSize}&pageIndex=${page.pageIndex+1}">后一页</a></li>
             	</c:otherwise>
             </c:choose>
           </ul>
