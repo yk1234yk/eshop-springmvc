@@ -6,9 +6,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>登录</title>
-	<link rel="shortcut icon" href="assets/images/favicon.png" />
-	<link href="../../../assets/css/theme-plugin.css" rel="stylesheet" />
-	<link href="../../../assets/css/theme.min.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-light-4">
@@ -31,7 +31,7 @@
 	         <div class="store-name">eshop</div>
 	          <h4 class="text-left mb-3 font-w-5">用户登录</h4>
 	          
-	          <form id="login-form" method="post" action="user?method=login">
+	          <form id="login-form" method="post" action="${pageContext.request.contextPath}/user/login">
 	            <div class="messages">${message}</div>
 	            <div class="form-group">
 	              <input id="form_name" type="text" name="username" class="form-control" placeholder="用户名" required data-error="用户名是必须字段">
@@ -57,7 +57,7 @@
 	          
 	          
 	          <div class="d-flex align-items-center text-center justify-content-center mt-4">
-	                <span class="text-muted mr-1">还没有账号?</span><a href="signup.jsp">注册</a>
+	                <span class="text-muted mr-1">还没有账号?</span><a href="${pageContext.request.contextPath}/user/signup">注册</a>
 	          </div>
 	        </div>
 	      </div>

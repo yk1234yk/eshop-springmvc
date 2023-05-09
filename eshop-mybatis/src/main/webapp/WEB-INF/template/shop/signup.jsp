@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>注册账号</title>
-	<link rel="shortcut icon" href="assets/images/favicon.png" />
-	<link href="../../../assets/css/theme-plugin.css" rel="stylesheet" />
-	<link href="../../../assets/css/theme.min.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-light-4">
@@ -35,7 +35,7 @@
         </div>
       <div class="col-lg-12 col-md-12 ml-auto mr-auto p-0">
         <div class="register-form text-center">
-          <form id="register-form" method="post" action="user?method=signup">
+          <form id="register-form" method="post" action="${pageContext.request.contextPath}/user/signup">
             <div class="messages"></div>
             <div class="row">
               <div class="col-md-12">
@@ -77,7 +77,7 @@
               <div class="col-md-12">
                 <input type="submit" class="btn btn-primary" value="注册"/><br>
                 <!--  <a href="SignupServlet" class="btn btn-primary" onclick="document.getElementById('register-form').submit();">注册</a>  -->
-                <span class="mt-4 d-block">已有账号? <a href="user?method=login">直接登录</a></span>
+                <span class="mt-4 d-block">已有账号? <a href="${pageContext.request.contextPath}/user/login">直接登录</a></span>
               </div>
             </div>
           </form>

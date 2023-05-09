@@ -32,15 +32,15 @@
                     </div>
                     <ul class="header_list">
                         <c:choose>
-                            <c:when test="${username == null}">
-                                <li><a href="user?method=login"><i class="icon fa fa-user"></i><span>登录</span></a></li>
-                                <li><a href="signup.jsp"><i class="icon fa fa-user-plus"></i><span>注册</span></a></li>
+                            <c:when test="${userName == null}">
+                                <li><a href="${pageContext.request.contextPath}/user/login"><i class="icon fa fa-user"></i><span>登录</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/signup"><i class="icon fa fa-user-plus"></i><span>注册</span></a></li>
                             </c:when>
                             <c:otherwise>
-                                <li><a href="account"><i class="icon fa fa-user"></i><span>${username}</span></a></li>
+                                <li><a href="account"><i class="icon fa fa-user"></i><span>${userName}</span></a></li>
                                 <li><a href="cart?method=view&id=${id}"><i class="icon fa fa-shopping-cart"></i><span>购物车</span></a>
                                 </li>
-                                <li><a href="user?method=logout"><i class="icon fa fa-power-off"></i><span>退出</span></a>
+                                <li><a href="${pageContext.request.contextPath}/user/logout"><i class="icon fa fa-power-off"></i><span>退出</span></a>
                                 </li>
                             </c:otherwise>
                         </c:choose>
