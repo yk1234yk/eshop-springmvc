@@ -8,13 +8,9 @@ import com.xhxy.eshop.service.CommentService;
 import com.xhxy.eshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -48,17 +44,18 @@ public class BlogController extends BaseServlet {
 
     // 文章详情
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable(required = true)Integer id,Model model) {
+    public String detail(@PathVariable(required = true) Integer id, Model model) {
         Blog blog = blogService.findById(id);
-        model.addAttribute("blog",blog);
+        model.addAttribute("blog", blog);
         return "blog-detail";
     }
 
     // 提交评论
-    public String saveComment(HttpServletRequest request, HttpServletResponse response) {
-        Integer blogId = Integer.parseInt(request.getParameter("blogId"));
-        Integer userId = Integer.parseInt(request.getParameter("userId"));
-        String content = request.getParameter("content");
+    @PostMapping("/saveComment")
+    public String saveComment(@RequestParam(required = true) Integer blogId,
+                              @RequestParam(required = true) Integer userId,
+                              @RequestParam(required = true) String content) {
+
 
         Comment comment = new Comment();
         comment.setBlog(blogService.findById(blogId));
@@ -68,6 +65,6 @@ public class BlogController extends BaseServlet {
 
         commentService.save(comment);
 
-        return "r:/blog?method=detail&id=" + blogId;    // 使用重定向
+        return "redirect:/blog/detail/" + blogId;    // 使用重定向
     }
 }
