@@ -92,24 +92,19 @@ public class CategoryController {
     }
 
     //依据搜索查询到的商品
-    @PostMapping("/search")
+    @GetMapping("/search")
     public String search(String name, String brief, String detail,
                          @RequestParam(required = false) Integer pageIndex,
                          @RequestParam(required = false) Integer pageSize,
                          Model model) {
-
         // 1.获得请求参数：分页
-
         if (pageIndex == null) {    // 有pageIndex参数
             pageIndex = 1;
         }
-
         if (pageSize == null) {    // 有pageSize参数
             pageSize=6;
         }
-
         Page page = new Page(pageSize,pageIndex);    // 每页显示pageSize条，当前为第pageIndex页
-
         // 2.获取请求参数：搜索词
         if (name.isBlank())
             name = null;

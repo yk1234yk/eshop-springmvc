@@ -33,14 +33,17 @@
                     <ul class="header_list">
                         <c:choose>
                             <c:when test="${userName == null}">
-                                <li><a href="${pageContext.request.contextPath}/user/login"><i class="icon fa fa-user"></i><span>登录</span></a></li>
-                                <li><a href="${pageContext.request.contextPath}/user/signup"><i class="icon fa fa-user-plus"></i><span>注册</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/login"><i
+                                        class="icon fa fa-user"></i><span>登录</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/signup"><i
+                                        class="icon fa fa-user-plus"></i><span>注册</span></a></li>
                             </c:when>
                             <c:otherwise>
                                 <li><a href="account"><i class="icon fa fa-user"></i><span>${userName}</span></a></li>
-                                <li><a href="cart?method=view&id=${id}"><i class="icon fa fa-shopping-cart"></i><span>购物车</span></a>
+                                <li><a href="${pageContext.request.contextPath}/cart/view"><i class="icon fa fa-shopping-cart"></i><span>购物车</span></a>
                                 </li>
-                                <li><a href="${pageContext.request.contextPath}/user/logout"><i class="icon fa fa-power-off"></i><span>退出</span></a>
+                                <li><a href="${pageContext.request.contextPath}/user/logout"><i
+                                        class="icon fa fa-power-off"></i><span>退出</span></a>
                                 </li>
                             </c:otherwise>
                         </c:choose>
@@ -89,11 +92,17 @@
                                 class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/index">首页</a></li>
-                                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/category/all">分类商品</a></li>
+                                <li class="nav-item"><a class="nav-link active"
+                                                        href="${pageContext.request.contextPath}/index">首页</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="${pageContext.request.contextPath}/category/all">分类商品</a>
+                                </li>
                                 <li class="nav-item"><a class="nav-link" href="miaosha.jsp">秒杀</a></li>
-                                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/blog/list">好物推荐</a></li>
-                                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/faq">常见问题</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="${pageContext.request.contextPath}/blog/list">好物推荐</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/faq">常见问题</a>
+                                </li>
                                 <li class="nav-item"><a class="nav-link" href="#"> </a></li>
                             </ul>
                         </div>
