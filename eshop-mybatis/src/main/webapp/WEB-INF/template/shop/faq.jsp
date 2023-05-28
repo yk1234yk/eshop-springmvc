@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +25,13 @@
 		  <div class="container">
 		    <div class="row align-items-center">
 		      <div class="col-md-6">
-		        <h1 class="h2 mb-0">常见问题</h1>
+		        <h1 class="h2 mb-0"><spring:message code="faq"/> </h1>
 		      </div>
 		      <div class="col-md-6 mt-3 mt-md-0">
 		        <nav aria-label="breadcrumb">
 		          <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
-		            <li class="breadcrumb-item"><a class="link-title" href="index.jsp">首页</a></li>
-		            <li class="breadcrumb-item active text-primary" aria-current="page">常见问题</li>
+		            <li class="breadcrumb-item"><a class="link-title" href="index.jsp"><spring:message code="index"/> </a></li>
+		            <li class="breadcrumb-item active text-primary" aria-current="page"><spring:message code="faq"/> </li>
 		          </ol>
 		        </nav>
 		      </div>

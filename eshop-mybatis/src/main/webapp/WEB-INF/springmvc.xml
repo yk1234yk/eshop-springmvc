@@ -34,5 +34,24 @@
 		<property name="prefix" value="/WEB-INF/template/shop/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
+<!--	6.加载国际化资源的Bean
+			使用Sp EL列出所有资源文件的basename,多个basename只要用逗号隔开-->
+	<bean id="messageSource"
+		  class="org.springframework.context.support.ResourceBundleMessageSource"
+		  p:basenames="#{{'messages'}}"
+		  p:defaultEncoding="utf-8"/>
+<!--	Session和Cookie国际化需要的配置-->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+			  p:paramName="locale"/>
+	</mvc:interceptors>
+<!--	Session的Locale解析器-->
+<!--	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>-->
+<!--	Cookie的Local解析器-->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+		  p:cookieName="clientlanguage"
+		  p:cookieMaxAge="3600"/>
 </beans>

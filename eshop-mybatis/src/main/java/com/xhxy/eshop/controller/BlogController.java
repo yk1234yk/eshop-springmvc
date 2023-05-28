@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
-public class BlogController extends BaseServlet {
+public class BlogController {
 
     //	private BlogService blogService = new BlogServiceImpl();
 //	private UserService userService = new UserServiceImpl();

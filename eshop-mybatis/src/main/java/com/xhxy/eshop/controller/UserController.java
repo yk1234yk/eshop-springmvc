@@ -7,9 +7,11 @@ import com.xhxy.eshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.RequestContext;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -88,18 +90,16 @@ public class UserController {
 
     //用户注册
     @PostMapping("/signup")
-    public String signup(User user, Model model) {
+    public String signup(User user, Model model, HttpServletRequest request) {
         // 获取请求参数
         // 调用UserDao插入新用户
+        RequestContext requestContext = new RequestContext(request);
         if (userService.addUser(user) > 0) {
             return "login";
         } else {
-            String message = "注册失败，请重新输入";
-            model.addAttribute("message", message);
-
+            model.addAttribute("message", requestContext.getMessage("signup_failure"));
             return "signup";
         }
-
     }
 
     //退出

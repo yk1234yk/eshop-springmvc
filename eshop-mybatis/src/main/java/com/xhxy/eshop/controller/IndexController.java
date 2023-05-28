@@ -1,43 +1,36 @@
 package com.xhxy.eshop.controller;
 
+import com.xhxy.eshop.entity.Blog;
+import com.xhxy.eshop.entity.Category;
+import com.xhxy.eshop.entity.Product;
+import com.xhxy.eshop.service.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.annotation.Resource;
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+@Controller
+public class IndexController {
 
-import com.xhxy.eshop.entity.Blog;
-import com.xhxy.eshop.entity.Cart;
-import com.xhxy.eshop.entity.Category;
-import com.xhxy.eshop.entity.Product;
-import com.xhxy.eshop.service.BlogService;
-import com.xhxy.eshop.service.CartService;
-import com.xhxy.eshop.service.CategoryService;
-import com.xhxy.eshop.service.ProductService;
-import com.xhxy.eshop.service.UserService;
-import com.xhxy.eshop.service.impl.mybatis.BlogServiceImpl;
-import com.xhxy.eshop.service.impl.mybatis.CartServiceImpl;
-import com.xhxy.eshop.service.impl.mybatis.CategoryServiceImpl;
-import com.xhxy.eshop.service.impl.mybatis.ProductServiceImpl;
-import com.xhxy.eshop.service.impl.mybatis.UserServiceImpl;
+	@Resource
+	private CategoryService categoryService;
+	@Resource
+	private ProductService productService;
+	@Resource
+	private BlogService blogService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private CartService cartService;
 
-@WebServlet("/index")
-public class IndexController  extends BaseServlet {
-
-	private CategoryService categoryService = new CategoryServiceImpl();
-	private ProductService productService = new ProductServiceImpl();
-	private BlogService blogService = new BlogServiceImpl();
-	private UserService userService = new UserServiceImpl();
-	private CartService cartService = new CartServiceImpl();
-	private List<Product> findAll;
-	
-	public String index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@GetMapping("index")
+	public String index(Model model) throws IOException {
 		
 		// 获取全部的顶层分类:用于左侧菜单
 		List<Category> topCategoryList = categoryService.findTopCategory();
@@ -57,16 +50,16 @@ public class IndexController  extends BaseServlet {
 		props.load(in);
 		
 		// 设置model属性
-		request.setAttribute("topCategoryList", topCategoryList);
-		request.setAttribute("hotProductList", hotProductList);
-		request.setAttribute("latestProductList", latestProductList);
-		request.setAttribute("blogList", blogList);
-		
-		request.setAttribute("allRequest", props.getProperty("allRequest"));
-		request.setAttribute("indexRequest", props.getProperty("indexRequest"));
-		request.setAttribute("onlineUser", props.getProperty("onlineUser"));
-		request.setAttribute("allUser", props.getProperty("allUser"));
+		model.addAttribute("topCategoryList", topCategoryList);
+		model.addAttribute("hotProductList", hotProductList);
+		model.addAttribute("latestProductList", latestProductList);
+		model.addAttribute("blogList", blogList);
+
+		model.addAttribute("allRequest", props.getProperty("allRequest"));
+		model.addAttribute("indexRequest", props.getProperty("indexRequest"));
+		model.addAttribute("onlineUser", props.getProperty("onlineUser"));
+		model.addAttribute("allUser", props.getProperty("allUser"));
 						
-		return "index.jsp";
+		return "index";
 	}
 }

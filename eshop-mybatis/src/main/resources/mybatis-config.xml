@@ -6,7 +6,7 @@
 <configuration>
 
 	<!-- 读取属性文件 -->
-	<properties resource="mysql.properties"></properties>
+	<properties resource="mysql.properties"/>
 	
 	<!-- 设置：一级缓存只用于语句级 -->
 	<settings>

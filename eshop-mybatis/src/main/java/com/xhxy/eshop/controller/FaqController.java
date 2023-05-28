@@ -21,7 +21,6 @@ public class FaqController {
 	@GetMapping("/index")
 	public String index(Model module){
 		List<Faq> faqs = faqService.findAll();
-		
 		module.addAttribute("faqs", faqs);
 		return "faq";
 	}
