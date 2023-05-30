@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,7 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png"/>
     <link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrapValidator.min.css" rel="stylesheet"/>
 </head>
 
 <body class="bg-light-4">
@@ -47,6 +50,7 @@
                                                        placeholder="<spring:message code="username"/>" required
                                                        data-error="<spring:message code="must"/> ">
                                                 <div class="help-block with-errors"></div>
+                                                <div class="col-sm-6 text-danger"><form:errors path="user.username"/> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -110,6 +114,8 @@
     </div>
     <!--body content end-->
     <%@ include file="footer.jsp" %>
+    <script src="${pageContext.request.contextPath}/assets/js/signup-validator.js"></script>
+
 </div>
 </body>
 </html>

@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
+@Controller(value = "/account")
 @RequestMapping("/account")
 @MultipartConfig(location = "D:\\", fileSizeThreshold = 1024)
 public class AccountController {
@@ -139,7 +139,7 @@ public class AccountController {
         return "account-user-edit";
     }
 //    用户信息----->  更改操作
-    @PostMapping("/updateUser")
+    @PostMapping("updateUser")
     public String updateUser(User user, String newPassword,Model model,HttpServletRequest request) throws IOException, ServletException {
         // 1.获取请求参数
         // 2.要不要替换密码
@@ -178,6 +178,6 @@ public class AccountController {
         // 5.返回表示层
         model.addAttribute("user", user);
         request.getSession().setAttribute("userName", user.getUsername());//重设会话中的username属性，更新页面右上角的用户名
-        return "redirect:/account/viewUser/" +user.getId();
+        return "redirect:/account/viewUser" +user.getId();
     }
 }

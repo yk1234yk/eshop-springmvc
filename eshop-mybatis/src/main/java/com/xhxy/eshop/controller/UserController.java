@@ -19,13 +19,15 @@ import javax.servlet.http.HttpSession;
  * 用户Servlet
  */
 @Controller
-@SessionAttributes({"userName","userId"})
+@SessionAttributes({"userName", "userId"})
 @RequestMapping("/user")
 public class UserController {
     private static final long serialVersionUID = 1L;
 
     //	private UserService userService = new UserServiceImpl();
 //	private CartService cartService = new CartServiceImpl();
+//    @Autowired
+//    private UserValidator userValidator;
     @Resource
     private UserService userService;
     @Resource
@@ -67,7 +69,7 @@ public class UserController {
             // 获取该用户的购物车
             Cart cart = cartService.findByUserId(id);
             // 判断是否需要自动登录
-            if (autologin!=null && autologin.equals("checked")) {
+            if (autologin != null && autologin.equals("checked")) {
                 Cookie nameCookie = new Cookie("username", user.getUsername());
                 Cookie pswdCookie = new Cookie("password", user.getPassword());
 
@@ -88,11 +90,19 @@ public class UserController {
 
     }
 
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//        binder.addValidators(userValidator);
+//    }
+
     //用户注册
     @PostMapping("/signup")
-    public String signup(User user, Model model, HttpServletRequest request) {
+    public String signup( User user, Model model, HttpServletRequest request) {
         // 获取请求参数
         // 调用UserDao插入新用户
+//        if (result.getErrorCount() > 0) {
+//            return "signup";
+//        }
         RequestContext requestContext = new RequestContext(request);
         if (userService.addUser(user) > 0) {
             return "login";
@@ -104,7 +114,7 @@ public class UserController {
 
     //退出
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("userName");
         session.removeAttribute("userId");
         session.invalidate();

@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png"/>
     <link href="${pageContext.request.contextPath}/assets/css/theme-plugin.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/assets/css/theme.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrapValidator.min.css" rel="stylesheet"/>
 </head>
 
 <body class="">
@@ -59,7 +60,8 @@
                                         我的订单</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="${pageContext.request.contextPath}/account/addresslist">
+                                    <a class="nav-link active"
+                                       href="${pageContext.request.contextPath}/account/addresslist">
                                         收货地址</a>
                                 </li>
                                 <li class="nav-item">
@@ -125,7 +127,8 @@
                                          aria-labelledby="addAddressModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form action="${pageContext.request.contextPath}/account/addAddress" method="post">
+                                                <form action="${pageContext.request.contextPath}/account/addAddress"
+                                                      id="address-edit-form" method="post">
                                                     <input name="userId" value="${userId}" type="hidden"/>
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">新增收货地址</h5>
@@ -216,6 +219,7 @@
     <!--body content end-->
 
     <%@ include file="footer.jsp" %>
+    <script src="${pageContext.request.contextPath}/assets/js/address-edit-validator.js"></script>
 </div>
 </body>
 </html>
