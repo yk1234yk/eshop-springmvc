@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     $("#register-form").bootstrapValidator({
         fields: {
@@ -40,9 +40,9 @@ $(function() {
             },
             password: {
                 validators: {
-                    //notEmpty: {
-                    //  message: '密码不能为空'
-                    // },
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
                     stringLength: {
                         min: 5,
                         max: 30,
@@ -58,42 +58,20 @@ $(function() {
                     }
                 }
             },
-            newpassword: { //用于account-edit-user.jsp
-                validators: {
-                    stringLength: {
-                        min: 5,
-                        max: 30,
-                        message: '密码长度必须在5到30之间'
+            repassword: {//用于signup.jsp
+                message:'重数密码无效',
+                validators:{
+                    notEmpty:{
+                        message:'重输密码不能为空'
                     },
-                    different: {//不能和用户名相同
-                        field: 'username',
-                        message: '不能和用户名相同'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_.]+$/,
-                        message: '密码由数字字母下划线和.组成'
-                    }
-                }
-            },
-            cpassword: { //用于account-edit-user.jsp
-                message: '密码无效',
-                validators: {
-                    stringLength: {
-                        min: 5,
-                        max: 30,
-                        message: '密码长度必须在5到30之间'
+                    stringLength:{
+                        min:5,
+                        max:30,
+                        message:'密码长度必须在5到30之间'
                     },
                     identical: {//相同
-                        field: 'newpassword',
-                        message: '两次密码不一致'
-                    },
-                    different: {//不能和用户名相同
-                        field: 'username',
-                        message: '不能和用户名相同'
-                    },
-                    regexp: {   //匹配规则
-                        regexp: /^[a-zA-Z0-9_.]+$/,
-                        message: '密码由数字字母下划线和.组成'
+                        field:'password',
+                        message:'两次密码不同'
                     }
                 }
             },

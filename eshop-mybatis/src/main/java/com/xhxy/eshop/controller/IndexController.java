@@ -13,6 +13,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 @Controller
@@ -46,7 +47,7 @@ public class IndexController {
 		
 		// 从properties属性文件中读取 总请求数、首页访问数、在线用户数、全部用户数
 		Properties props = new Properties();
-		InputStream in = new BufferedInputStream(getClass().getResourceAsStream("/eshop.properties")); 
+		InputStream in = new BufferedInputStream(Objects.requireNonNull(getClass().getResourceAsStream("/eshop.properties")));
 		props.load(in);
 		
 		// 设置model属性

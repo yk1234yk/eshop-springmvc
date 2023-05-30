@@ -139,7 +139,7 @@ public class AccountController {
         return "account-user-edit";
     }
 //    用户信息----->  更改操作
-    @PostMapping("updateUser")
+    @PostMapping("/updateUser")
     public String updateUser(User user, String newPassword,Model model,HttpServletRequest request) throws IOException, ServletException {
         // 1.获取请求参数
         // 2.要不要替换密码
