@@ -4,8 +4,13 @@ import com.xhxy.eshop.entity.Cart;
 import com.xhxy.eshop.entity.User;
 import com.xhxy.eshop.service.CartService;
 import com.xhxy.eshop.service.UserService;
+import com.xhxy.eshop.validator.UserValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.RequestContext;
 
@@ -26,8 +31,9 @@ public class UserController {
 
     //	private UserService userService = new UserServiceImpl();
 //	private CartService cartService = new CartServiceImpl();
-//    @Autowired
-//    private UserValidator userValidator;
+    @Autowired
+    @Resource
+    private UserValidator userValidator;
     @Resource
     private UserService userService;
     @Resource
@@ -90,20 +96,19 @@ public class UserController {
 
     }
 
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder) {
-//        binder.addValidators(userValidator);
-//    }
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.addValidators(userValidator);
+    }
 
     //用户注册
     @PostMapping("/signup")
-    public String signup( User user, Model model, HttpServletRequest request) {
-        // 获取请求参数
-        // 调用UserDao插入新用户
-//        if (result.getErrorCount() > 0) {
-//            return "signup";
-//        }
-        RequestContext requestContext = new RequestContext(request);
+    public String signup(@Validated User user, BindingResult result, Model model, HttpServletRequest request) {
+
+        if (result.getErrorCount() > 0) {//校验发现错误
+            return "signup";
+        }
+        var requestContext = new RequestContext(request);
         if (userService.addUser(user) > 0) {
             return "login";
         } else {

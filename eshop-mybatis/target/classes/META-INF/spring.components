@@ -25,3 +25,4 @@ com.xhxy.eshop.service.impl.mybatis.OrderServiceImpl=org.springframework.stereot
 com.xhxy.eshop.service.impl.mybatis.PictureServiceImpl=org.springframework.stereotype.Component
 com.xhxy.eshop.service.impl.mybatis.ProductServiceImpl=org.springframework.stereotype.Component
 com.xhxy.eshop.service.impl.mybatis.UserServiceImpl=org.springframework.stereotype.Component
+com.xhxy.eshop.validator.UserValidator=org.springframework.stereotype.Component

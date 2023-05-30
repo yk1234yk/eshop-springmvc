@@ -18,4 +18,5 @@ public interface UserService {
     // 用id获取该用户的密码
     public String findPasswordById(int id);
 
+    public Boolean existUsername(String username);
 }

@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findPasswordById(id);
 	}
 
+	@Override
+	public Boolean existUsername(String username) {
+		return userMapper.existUsername(username);
+	}
+
+
 }

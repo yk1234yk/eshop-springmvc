@@ -34,5 +34,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.findPasswordById(id);
 	}
 
+	@Override
+	public Boolean existUsername(String username) {
+		return false;
+	}
+
 
 }
